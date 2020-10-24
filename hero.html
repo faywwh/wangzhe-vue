@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>王者荣耀英雄介绍-Vue</title>
+    <link rel="icon" href="./logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_2034542_glcp6wqoeds.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="hero-list">
+      <div class="top">
+        <div class="logo">
+          <a href="./index.html" class="logo-img"
+            ><img
+              src="//game.gtimg.cn/images/yxzj/m/m201606/cp/logo.png"
+              alt=""
+          /></a>
+          <span>王者荣耀&nbsp;&nbsp;&nbsp;&nbsp;攻略站</span>
+        </div>
+        <div class="more">
+          <a href="./index.html">更多英雄&nbsp;<span>></span></a>
+        </div>
+      </div>
+      <div class="header-box">
+        <div class="header" :style="`background-image: url(${info.avatar})`">
+          <div class="hero-attribute">
+            <p class="hero-title">{{info.title}}</p>
+            <p class="hero-name">{{info.name}}</p>
+            <p class="hero-type">{{location}}</p>
+            <div class="hero-cover">
+              <ul class="cover-list">
+                <li v-for="item in desc" :key="item.key">
+                  {{item.type}}<span
+                    :class="[ 
+                      'hero-attrsp',
+                      `hero-attr${item.attr}-${info.desc[item.ename]}`
+                    ]"
+                  ></span>
+                </li>
+              </ul>
+              <a
+                :href="`https://pvp.qq.com/m/m201706/herodetail/skin.shtml?imgname=${
+        skinName
+      }&name=${info.heroId}`"
+                >皮肤：{{skinLen}}></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <ul class="hero-nav">
+          <li
+            v-for="item in title"
+            :key="item.class"
+            :class="`li${item.class}`"
+            @click="toggleList(item)"
+          >
+            <span
+              :class="[
+              `sp${item.class}`,
+              {
+                active:titleKey==item.class
+             }]"
+              >{{item.type}}</span
+            >
+          </li>
+        </ul>
+        <div class="slide-content" ref="content">
+          <div
+            :class="['content-list1',{
+            active:titleKey==1
+          } ]"
+            ref="list1"
+          >
+            <div class="hero-video">
+              <a :href="`${info.video}`"
+                ><i class="iconfont icon-link"></i>&nbsp;&nbsp;英雄介绍视频</a
+              >
+              <a
+                :href="`https://pvp.qq.com/m/m201706/heropic-detail.shtml?hid=${info.heroId}`"
+                ><i class="iconfont icon-link"></i>&nbsp;&nbsp;一图识英雄</a
+              >
+            </div>
+            <div class="ability-introduce-panel">
+              <div class="panel-box">
+                <ul class="ability">
+                  <li
+                    v-for="(item,index) in abilityIntro"
+                    :key="index"
+                    :index="index"
+                    :class="{active:abilityKey==index}"
+                    :style="
+                    `background-image: url(//game.gtimg.cn/images/yxzj/img201606/heroimg/${info.heroId}/${info.heroId}${index}0.png);`
+                    "
+                    @click="toggleAbility(index)"
+                  ></li>
+                </ul>
+                <ul class="ability-text">
+                  <li
+                    v-for="(item,index) in abilityIntro"
+                    :key="index"
+                    :class="['ability-text-li', {
+                      active:abilityKey==index
+                    }]"
+                  >
+                    <p>
+                      <span class="title"
+                        >{{item.name}}&nbsp;&nbsp;&nbsp;&nbsp;</span
+                      ><span class="text">{{item.value}}</span>
+                    </p>
+                    <p class="ability-detail">{{item.desc}}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="suggest-panel">
+              <div class="panel-box">
+                <p class="suggest-title">
+                  <i class="iconfont icon-edit"></i> 加点建议
+                </p>
+                <div class="suggest-box">
+                  <div
+                    v-for="(item,index) in nameArr"
+                    :key="index"
+                    :class="`${mainUp[index][1]}-up`"
+                  >
+                    <span class="up">{{mainUp[index][0]}}</span
+                    ><span
+                      class="img"
+                      :style="`
+                        background-image: url(//game.gtimg.cn/images/yxzj/img201606/heroimg/${info.heroId}/${item.skillId}.png);
+                      `"
+                    ></span
+                    ><span class="ability-name">{{item.name}}</span>
+                  </div>
+                  <div class="kael">
+                    <p class="up">召唤师技能</p>
+                    <div class="kael-ability">
+                      <div
+                        v-for="(item,index) in sumName"
+                        :key="index"
+                        :class="`ability${index + 1}`"
+                      >
+                        <span
+                          class="img"
+                          :style="`
+                            background-image: url(//game.gtimg.cn/images/yxzj/img201606/summoner/${summoner[index]}.jpg);
+                          `"
+                        ></span>
+                        <span class="ability-name"> {{item[0]}} </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="equip-panel">
+              <div class="panel-box">
+                <p class="panel-title">
+                  <i class="iconfont icon-edit"></i> 出装推荐
+                </p>
+                <div
+                  v-for="(item,index) in equipment"
+                  :key="index"
+                  class="equip-recommend"
+                >
+                  <p class="title2">{{equ[index]}}</p>
+                  <ul>
+                    <li v-for="(ele,eleindex) in item" :key="eleindex">
+                      <span
+                        class="img"
+                        :style="`
+                          background-image: url(//game.gtimg.cn/images/yxzj/img201606/itemimg/${ele}.jpg);
+                        `"
+                      ></span>
+                      <span>{{equName(ele)}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="panel inscription-panel">
+              <div class="panel-box">
+                <p class="panel-title">
+                  <i class="iconfont icon-edit"></i> 铭文推荐
+                </p>
+                <div class="panel-list">
+                  <div
+                    v-for="(ele,index) in mingList"
+                    :key="index"
+                    class="datail"
+                  >
+                    <div
+                      class="img"
+                      :style="`
+                        background-image: url(//game.gtimg.cn/images/yxzj/img201606/mingwen/${ele}.png);
+                      `"
+                    ></div>
+                    <p class="text">{{mingName(ele)}}</p>
+                    <div v-html="mingText(ele)"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div v-for="(item,index) in skill" :key="index" class="panel">
+              <div class="panel-box">
+                <p class="panel-title">
+                  <i class="iconfont icon-edit"></i> {{panelTitle[index]}}
+                </p>
+                <p class="detail-text">{{item.desc}}</p>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-box">
+                <p class="panel-title">
+                  <i class="iconfont icon-edit"></i>英雄关系
+                </p>
+                <template v-for="(item,index) in relation">
+                  <p class="title2">{{relTitle[index]}}</p>
+                  <ul class="parner-ul">
+                    <li v-for="(ele,eleindex) in item.list" :key="eleindex">
+                      <div
+                        class="img"
+                        :style="`background-image: url(${ele.image})`"
+                      ></div>
+                      <p class="datail-text">{{ele.text}}</p>
+                    </li>
+                  </ul>
+                </template>
+              </div>
+            </div>
+          </div>
+          <div
+            :class="['content-list2',{
+            active:titleKey==2
+          } ]"
+            ref="list2"
+          >
+            <ul class="strategy">
+              <li v-for="(item,index) in videoData" :key="index">
+                <a
+                  :href="`https://pvp.qq.com/m/m201606/${item.iVideoId ? 'detail' : 'newCont'}.shtml?G_Biz=18&tid=${item.iVideoId || item.iId}`"
+                >
+                  <div
+                    class="bgimg"
+                    :style="`background-image: url(${item.sIMG})`"
+                  >
+                    <img
+                      v-if="item.iVideoId"
+                      src="//game.gtimg.cn/images/yxzj/m/m201706/images/herodetail/video-img.png"
+                      alt=""
+                    />
+                  </div>
+                  <div class="detail-text">
+                    <p class="title">{{item.sTitle}}</p>
+                    <div class="text">
+                      <span class="iconfont icon-edit"
+                        >{{item.iTotalPlay}}</span
+                      >
+                      <span>{{item.sIdxTime.substring(0, 10)}}</span>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+            <div class="load-more">
+              <a href="">全部加载完成</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./utils/jsonp.js"></script>
+    <script src="./js/hero.js"></script>
+  </body>
+</html>

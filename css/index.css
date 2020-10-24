@@ -1,0 +1,398 @@
+.main-nav {
+  background: #db9e3f;
+  height: 42px;
+  width: 100%;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.main-nav ul li {
+  width: 33.33%;
+  text-align: center;
+  height: 100%;
+  line-height: 42px;
+}
+
+.main-nav li a {
+  position: relative;
+  color: #fff;
+  font-size: 13px;
+}
+
+.main-nav li a.active::after {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 25px;
+  height: 3px;
+  background: #fff;
+}
+
+.swiper-container {
+  height: 170px;
+  padding-bottom: 10px;
+}
+
+.swiper-container .swiper-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+
+.content-wrap .home-nav ul {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 70px;
+}
+
+.content-wrap .home-nav ul.active {
+  height: 100%;
+}
+
+.content-wrap .home-nav li {
+  position: relative;
+  width: 25%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.content-wrap .home-nav li:not(:nth-child(4n))::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  right: 0;
+  display: block;
+  height: 51px;
+  width: 1px;
+  background: #d4d9de;
+}
+
+.content-wrap .home-nav a {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrap .home-nav i {
+  height: 34px;
+  line-height: 34px;
+  font-size: 25px;
+}
+
+.content-wrap .home-nav li span {
+  height: 17px;
+  line-height: 17px;
+}
+
+.content-wrap .home-nav .entry-btn {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: #f9f9f9;
+}
+
+.content-wrap .section {
+  margin-top: 13px;
+  padding: 0 17px;
+  border-bottom: 1px solid #d4d9de;
+  background: #fff;
+}
+
+.content-wrap .section > .title {
+  position: relative;
+  margin-bottom: 12px;
+  padding: 15px 0;
+  height: 20px;
+  line-height: 20px;
+  border-bottom: 1px solid rgba(212, 217, 222, 0.3);
+}
+
+.content-wrap .section .hero-list-title {
+  margin-bottom: 0;
+}
+
+.section .title .title-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.section .title a {
+  font-size: 25px;
+  position: absolute;
+  right: 0;
+}
+
+.section .news-slide > ul {
+  display: flex;
+}
+
+.section .news-slide li {
+  height: 23px;
+  line-height: 23px;
+}
+
+.section .news-slide > ul li:not(:last-child) {
+  margin-right: 47px;
+}
+
+.section .news-slide li span {
+  position: relative;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.section .news-slide li span.active {
+  color: #db9e3f;
+}
+
+.news-slide li span.active::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 25px;
+  height: 3px;
+  background: #db9e3f;
+}
+
+.section .content {
+  margin-top: 15px;
+}
+
+.section .content li {
+  position: relative;
+  margin-bottom: 15px;
+  height: 19px;
+  line-height: 19px;
+}
+
+.section .content li a {
+  display: flex;
+}
+
+.section .content .title {
+  border-radius: 3px;
+  padding: 0 2px;
+  margin-right: 3px;
+}
+
+.section .content .announcement {
+  color: #f09a37;
+  border: 1px solid #f09a37;
+}
+
+.section .content .new {
+  color: #1e96ab;
+  border: 1px solid #1e96ab;
+}
+
+.section .content .activity,
+.hot {
+  color: #ff3636;
+  border: 1px solid #ff3636;
+}
+
+.section .content .match {
+  color: #4d9cff;
+  border: 1px solid #4d9cff;
+}
+
+.section .content .news-text {
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.section .content .time {
+  /* position: absolute; */
+  right: 0;
+  color: #999;
+}
+
+.section .pic-slide {
+  height: 117px;
+  padding-bottom: 15px;
+  margin-bottom: 12px;
+}
+
+.section .pic-slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.section .hero-slide {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+}
+
+.section .hero-slide li {
+  display: inline-block;
+}
+
+.section .hero-slide > ul li:not(:last-child) {
+  margin-right: 22px;
+}
+
+.section .hero-slide span {
+  position: relative;
+  font-size: 13px;
+}
+
+.section .hero-slide span.active {
+  color: #db9e3f;
+}
+
+.section .hero-slide span.active::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 25px;
+  height: 3px;
+  background: #db9e3f;
+}
+
+.section .hero-slide-wrapper {
+  margin-top: 15px;
+}
+
+.section .hero-slide-wrapper li {
+  width: 20%;
+}
+
+.section .hero-slide-wrapper .hero-pic {
+  height: 57px;
+  width: 57px;
+}
+
+.section .hero-slide-wrapper .hero-pic a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+
+.section .hero-slide-wrapper .hero-name {
+  display: block;
+  height: 18px;
+  line-height: 18px;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.section.video-section {
+  padding-bottom: 5px;
+}
+
+.section .video-slide {
+  padding-bottom: 10px;
+}
+
+.section .video-slide > ul li {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.section .video-slide > ul span {
+  position: relative;
+  font-size: 13px;
+}
+
+.section .video-slide > ul span.active {
+  color: #db9e3f;
+}
+
+.section .video-slide > ul span.active::after {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #db9e3f;
+}
+
+.section .video-slide-wrapper {
+  margin-top: 15px;
+}
+
+.section .video-slide-wrapper li {
+  display: inline-block;
+  width: 49%;
+  margin-bottom: 12px;
+}
+
+.section .video-slide-wrapper li:nth-child(2n-1) {
+  margin-right: 5px;
+}
+
+.section .video-slide-wrapper .video-pic {
+  height: 95px;
+  background-size: cover;
+}
+
+.section .video-slide-wrapper .video-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 13px;
+  margin-top: 9px;
+}
+
+.video-slide-wrapper .info {
+  display: flex;
+  height: 25px;
+  line-height: 25px;
+  color: #7a7a80;
+}
+
+.video-slide-wrapper .info > span {
+  width: 50%;
+}
+
+.video-slide-wrapper .info span {
+  font-size: 12px;
+}
+
+.video-slide-wrapper .info .video-time {
+  text-align: right;
+}
+
+.load-more {
+  position: relative;
+  background: #fff;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin-top: -1px;
+  border-bottom: 1px solid #d4d9de;
+}
+
+.load-more::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #f4f4f4;
+}
+
+.load-more a {
+  color: #7a7a80;
+}

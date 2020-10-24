@@ -1,0 +1,112 @@
+[
+  {
+    "appearrate": 3780,
+    "changeinfo": "",
+    "changetime": "4月29日",
+    "changetype": 0,
+    "heroid": "112",
+    "herotype": "5|",
+    "kda": 326,
+    "rank": 1,
+    "winrate": 5065
+  },
+  {
+    "appearrate": 3150,
+    "changeinfo": "",
+    "changetime": "3月17日",
+    "changetype": 0,
+    "heroid": "169",
+    "herotype": "5|",
+    "kda": 303,
+    "rank": 2,
+    "winrate": 5000
+  },
+  {
+    "appearrate": 3050,
+    "changeinfo": "",
+    "changetime": "2月26日",
+    "changetype": 0,
+    "heroid": "166",
+    "herotype": "1|",
+    "kda": 307,
+    "rank": 3,
+    "winrate": 4828
+  },
+  {
+    "appearrate": 2850,
+    "changeinfo": "",
+    "changetime": "5月15日",
+    "changetype": 0,
+    "heroid": "167",
+    "herotype": "4|",
+    "kda": 300,
+    "rank": 4,
+    "winrate": 5020
+  },
+  {
+    "appearrate": 2780,
+    "changeinfo": "",
+    "changetime": "12月11日",
+    "changetype": 0,
+    "heroid": "193",
+    "herotype": "1|",
+    "kda": 291,
+    "rank": 5,
+    "winrate": 4921
+  },
+  {
+    "appearrate": 2710,
+    "changeinfo": "",
+    "changetime": "7月30日",
+    "changetype": 0,
+    "heroid": "109",
+    "herotype": "2|",
+    "kda": 324,
+    "rank": 6,
+    "winrate": 4854
+  },
+  {
+    "appearrate": 2700,
+    "changeinfo": "",
+    "changetime": "8月18日",
+    "changetype": 0,
+    "heroid": "127",
+    "herotype": "2|",
+    "kda": 386,
+    "rank": 7,
+    "winrate": 4886
+  },
+  {
+    "appearrate": 2430,
+    "changeinfo": "",
+    "changetime": "6月2日",
+    "changetype": 0,
+    "heroid": "123",
+    "herotype": "1|",
+    "kda": 289,
+    "rank": 8,
+    "winrate": 4947
+  },
+  {
+    "appearrate": 2400,
+    "changeinfo": "",
+    "changetime": "9月24日",
+    "changetype": 0,
+    "heroid": "142",
+    "herotype": "2|",
+    "kda": 353,
+    "rank": 9,
+    "winrate": 4785
+  },
+  {
+    "appearrate": 2380,
+    "changeinfo": "",
+    "changetime": "3月31日",
+    "changetype": 0,
+    "heroid": "150",
+    "herotype": "4|",
+    "kda": 328,
+    "rank": 10,
+    "winrate": 5047
+  }
+]

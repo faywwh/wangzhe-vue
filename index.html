@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>王者荣耀-Vue</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="//at.alicdn.com/t/font_2034542_glcp6wqoeds.css"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="wang-zhe">
+      <div class="main-nav">
+        <ul>
+          <li><a href="./index.html" class="active">首页</a></li>
+          <li>
+            <a href="https://pvp.qq.com/m/m201706/strategycenter.shtml"
+              >攻略中心</a
+            >
+          </li>
+          <li>
+            <a href="https://pvp.qq.com/m/m201706/matchindex.shtml">赛事中心</a>
+          </li>
+        </ul>
+      </div>
+      <div class="content-wrap">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div
+              v-for="(item,index) in sliderPic"
+              :key="index"
+              class="swiper-slide"
+            >
+              <a :href="`${item[1]}`"
+                ><img :src="`http://ossweb-img.qq.com/upload/adw/${item[2]}`"
+              /></a>
+            </div>
+          </div>
+          <!-- 如果需要分页器 -->
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="home-nav">
+          <ul
+            :class="{
+            'home-nav-ul':true,
+            active:isActive}"
+          >
+            <li>
+              <a href="https://pvp.qq.com/m/m201706/coming/index.htm"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>爆料站</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/story201904/index.html#/index"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>故事站</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/mall/m/?biz=yxzj#/"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>周边商城</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/cp/a20161116tyf/page01.htm"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>体验服</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/m/m201606/goCenter.shtml"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>新人专区</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/m/memory/index.shtml"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>荣耀·传承</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://image.ttwz.qq.com/wzry/wzryzs_download_4001.htm?ADTAG=mpvp.qq.com"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>王者营地</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="https://game.weixin.qq.com/cgi-bin/comm/openlink?noticeid=90102708&appid=wx95a3a4d7c627e07d&url=https%3A%2F%2Fgame.weixin.qq.com%2Fcgi-bin%2Fh5%2Fstatic%2Fsubscribe%2Findex.html%3Fappid%3Dwx95a3a4d7c627e07d#wechat_redirect"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>公众号</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/cp/a20190320bbgxsmm/index.html"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>版本介绍</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/cp/a20190917station/index.html"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>对局环境</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/cp/a20190827boundlessp/index.html"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>无限王者团</span></a
+              >
+            </li>
+            <li>
+              <a href="https://pvp.qq.com/m/hdy/p1/index.html"
+                ><i class="iconfont icon-gongzhonghao"></i
+                ><span>创意互动营</span></a
+              >
+            </li>
+          </ul>
+          <div class="entry-btn" @click="isActive=!isActive">
+            <span
+              :class="{
+                span: true,
+                iconfont: true,
+                'icon-search': isActive,
+                'icon-edit': !isActive
+              }"
+            ></span>
+            <span class="home-nav-text">{{isActive?'收起':'展开'}}</span>
+          </div>
+        </div>
+        <div class="section">
+          <div class="title">
+            <span class="iconfont icon-edit"></span>
+            <span class="title-text">新闻资讯</span>
+            <a href="https://pvp.qq.com/m/m201706/newsList.shtml">···</a>
+          </div>
+          <div class="news-slide">
+            <ul class="news-slide-ul">
+              <li v-for="(item) in tagList" :key="item.key">
+                <span
+                  :class="{active:activeKey===item.key}"
+                  @click="getNews(item.key)"
+                  >{{item.name}}</span
+                >
+              </li>
+            </ul>
+            <div class="content">
+              <ul>
+                <li v-for="(item,index) in newsList" :key="item.iNewsId">
+                  <a
+                    :href="`https://pvp.qq.com/m/m201606/newCont.shtml?newCont.shtml?G_Biz=18&tid=${item.iNewsId}`"
+                  >
+                    <span
+                      :class="['title', chooseNewsName(activeKey, item.sTagIds)[1]]"
+                      >{{chooseNewsName(activeKey, item.sTagIds)[0]}}</span
+                    >
+                    <span class="news-text">{{item.sTitle}}</span>
+                    <span class="time"
+                      >{{item.sTargetIdxTime | formatTime}}</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="section">
+          <div class="title hero-list-title">
+            <span class="iconfont icon-edit"></span>
+            <span class="title-text">英雄列表</span>
+            <a href="https://pvp.qq.com/m/m201706/heroList.shtml">···</a>
+          </div>
+          <div class="pic-slide">
+            <a
+              href="./hero.html?id=533"
+              style="
+                background-image: url(//ossweb-img.qq.com/upload/webplat/info/yxzj/20200804/910041372175223.jpg);
+              "
+            ></a>
+          </div>
+          <div class="hero-slide">
+            <ul class="hero-slide-ul">
+              <li v-for="(item) in heroTypeList" :key="item.key">
+                <span
+                  :class="{
+                    active: heroTypeKey == item.key
+                  }"
+                  @click="heroTypeKey = item.key"
+                  >{{item.type}}</span
+                >
+              </li>
+            </ul>
+            <div class="hero-slide-wrapper">
+              <ul>
+                <li
+                  v-for="(item) in heroArrList"
+                  @click="openHeroDetail(item.ename)"
+                >
+                  <div class="hero-pic">
+                    <a
+                      :style="`
+                        background-image: url(//game.gtimg.cn/images/yxzj/img201606/heroimg/${item.ename}/${item.ename}.jpg);
+                      `"
+                    ></a>
+                  </div>
+                  <a class="hero-name" href="">{{item.cname}}</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="section video-section">
+          <div class="title">
+            <span class="iconfont icon-edit"></span>
+            <span class="title-text">精彩视频</span>
+            <a href="https://pvp.qq.com/m/m201706/strategycenter.shtml">···</a>
+          </div>
+          <div class="video-slide">
+            <ul class="video-slide-ul">
+              <li v-for="item in videoList" :key="item.key">
+                <span
+                  :class="{active:videoKey==item.key}"
+                  @click="getBoutiquePrograma(item)"
+                  >{{item.type}}</span
+                >
+              </li>
+            </ul>
+            <div class="video-slide-wrapper">
+              <ul>
+                <li v-for="(item,index) in videoData" :key="index">
+                  <a
+                    :href="`https://pvp.qq.com/m/m201606/detail.shtml?G_Biz=18&tid=${item.iVideoId}&e_code=pvpweb_m.statictypenew.type${item.iType}`"
+                    ><div
+                      class="video-pic"
+                      :style="`background-image:url(${item.sIMG})`"
+                    ></div>
+                    <span class="video-text">{{item.sTitle}}</span></a
+                  >
+                  <div class="info">
+                    <span
+                      ><span class="iconfont icon-edit"></span
+                      >{{item.iTotalPlay}}</span
+                    >
+                    <span class="video-time"
+                      >{{item.sIdxTime | formatTime('-')}}</span
+                    >
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="load-more">
+          <a href="https://pvp.qq.com/m/m201706/strategycenter.shtml"
+            >加载更多内容</a
+          >
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
